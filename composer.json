@@ -11,7 +11,9 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "~2.0.0"
+        "yiisoft/yii2": "~2.0.0",
+        "mihaildev/yii2-ckeditor": "*",
+        "mihaildev/yii2-elfinder": "*"
     },
     "autoload": {
         "psr-4": { "developerav\\blog\\": "" }

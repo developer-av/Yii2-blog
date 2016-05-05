@@ -7,7 +7,11 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
-$this->title = 'Блог'
+$this->title = 'Блог';
+if(yii::$app->request->get('username'))
+{
+    $this->title .= ' '.yii::$app->request->get('username');
+}
 ?>
 
 <?php

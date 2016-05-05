@@ -4,7 +4,7 @@
  * $model developerav\blog\common\models\Posts
  */
 
-
+use yii\helpers\Html;
 $this->title = $model['title'];
 ?>
 
@@ -13,7 +13,7 @@ $this->title = $model['title'];
     <?= $model['title'] ?>
 </h2>
 <p class="lead">
-    Автор: <?= $model['user']['username'] ?>
+    Автор: <?= Html::a($model['user']['username'], ['', 'username' => $model['user']['username']]) ?>
 </p>
 <p><span class="glyphicon glyphicon-time"></span> Опубликован <?= Yii::$app->formatter->asDateTime($model['created_at']); ?></p>
 <?php
