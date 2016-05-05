@@ -4,6 +4,7 @@ namespace developerav\forum\common\models;
 
 use yii\behaviors\TimestampBehavior;
 use \yii\db\ActiveRecord;
+use yii\helpers\StringHelper;
 
 /**
  * This is the model class for table "posts".
@@ -34,8 +35,8 @@ class Posts extends ActiveRecord {
                     ActiveRecord::EVENT_BEFORE_INSERT => 'created_at',
                 ],
                 'value' => function() {
-                    return date('U');
-                },
+            return date('U');
+        },
             ],
             'username' => [
                 'class' => TimestampBehavior::className(),
@@ -43,8 +44,8 @@ class Posts extends ActiveRecord {
                     ActiveRecord::EVENT_BEFORE_INSERT => 'user_id',
                 ],
                 'value' => function() {
-                    return \yii::$app->user->id;
-                },
+            return \yii::$app->user->id;
+        },
             ],
         ];
     }
@@ -77,6 +78,13 @@ class Posts extends ActiveRecord {
 
     public function getUser() {
         return $this->hasOne(\common\models\User::className(), ['id' => 'user_id'])->select(['username', 'id']);
+    }
+
+    public static function Preview($models) {
+        foreach ($models as $key => $model) {
+            $models[$key]['text'] = StringHelper::truncate(strip_tags($model['text']), 400);
+        }
+        return $models;
     }
 
 }
