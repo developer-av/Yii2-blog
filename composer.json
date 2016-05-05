@@ -1,0 +1,19 @@
+{
+    "name": "developer-av/yii2-forum",
+    "description": "Ecso Yii2-forum module.",
+    "keywords": ["yii2", "module", "forum", "ecso"],
+    "type": "yii2-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Vodolazhchenko",
+            "email": "developer-av@yandex.ru"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": { "developerav\\forum\\": "" }
+    }
+}
