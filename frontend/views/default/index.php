@@ -1,10 +1,11 @@
 <?php
 /*
  * $this yii\web\View
- * $model developerav\forum\common\models\Posts
+ * $model developerav\blog\common\models\Posts
  */
 
 use yii\helpers\Html;
+use yii\widgets\LinkPager;
 
 $this->title = 'Блог'
 ?>
@@ -16,7 +17,7 @@ foreach ($models as $model):
         <?= Html::a($model['title'], ['view', 'id' => $model['id']]) ?>
     </h2>
     <p class="lead">
-        Автор: <?= $model['user']['username'] ?>
+        Автор: <?= Html::a($model['user']['username'], ['', 'username' => $model['user']['username']]) ?>
     </p>
     <p><span class="glyphicon glyphicon-time"></span> Опубликован <?= Yii::$app->formatter->asDateTime($model['created_at']); ?></p>
     <?php
@@ -34,4 +35,7 @@ foreach ($models as $model):
     <hr>
     <?php
 endforeach;
+echo LinkPager::widget([
+    'pagination' => $pages,
+]);
 ?>

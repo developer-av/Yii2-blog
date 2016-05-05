@@ -5,10 +5,10 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $searchModel developerav\forum\backend\models\PostsSearch */
+/* @var $searchModel developerav\blog\backend\models\PostsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('forum', 'Posts');
+$this->title = Yii::t('blog', 'Posts');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="posts-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-    <?= Html::a(Yii::t('forum', 'Create Posts'), ['create'], ['class' => 'btn btn-success']) ?>
+    <?= Html::a(Yii::t('blog', 'Create Posts'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?php Pjax::begin(); ?>    <?=
     GridView::widget([

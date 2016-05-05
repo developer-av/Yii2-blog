@@ -1,6 +1,6 @@
 <?php
 
-namespace developerav\forum\frontend;
+namespace developerav\blog\frontend;
 
 class Module extends \yii\base\Module {
 

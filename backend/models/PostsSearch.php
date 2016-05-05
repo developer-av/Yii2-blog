@@ -1,14 +1,14 @@
 <?php
 
-namespace developerav\forum\backend\models;
+namespace developerav\blog\backend\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use developerav\forum\common\models\Posts;
+use developerav\blog\common\models\Posts;
 
 /**
- * PostsSearch represents the model behind the search form about `developerav\forum\common\models\Posts`.
+ * PostsSearch represents the model behind the search form about `developerav\blog\common\models\Posts`.
  */
 class PostsSearch extends Posts
 {

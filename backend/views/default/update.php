@@ -3,14 +3,14 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model developerav\forum\common\models\Posts */
+/* @var $model developerav\blog\common\models\Posts */
 
-$this->title = Yii::t('forum', 'Update {modelClass}: ', [
+$this->title = Yii::t('blog', 'Update {modelClass}: ', [
     'modelClass' => 'Posts',
 ]) . $model->title;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('forum', 'Posts'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('blog', 'Posts'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('forum', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('blog', 'Update');
 ?>
 <div class="posts-update">
 

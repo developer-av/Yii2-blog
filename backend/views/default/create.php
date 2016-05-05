@@ -4,10 +4,10 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model developerav\forum\common\models\Posts */
+/* @var $model developerav\blog\common\models\Posts */
 
-$this->title = Yii::t('forum', 'Create Posts');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('forum', 'Posts'), 'url' => ['index']];
+$this->title = Yii::t('blog', 'Create Posts');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('blog', 'Posts'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="posts-create">

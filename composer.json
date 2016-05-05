@@ -1,7 +1,7 @@
 {
-    "name": "developer-av/yii2-forum",
-    "description": "Ecso Yii2-forum module.",
-    "keywords": ["yii2", "module", "forum", "ecso"],
+    "name": "developer-av/yii2-blog",
+    "description": "Ecso Yii2-blog module.",
+    "keywords": ["yii2", "module", "blog", "ecso"],
     "type": "yii2-extension",
     "license": "MIT",
     "authors": [
@@ -14,6 +14,6 @@
         "yiisoft/yii2": "~2.0.0"
     },
     "autoload": {
-        "psr-4": { "developerav\\forum\\": "" }
+        "psr-4": { "developerav\\blog\\": "" }
     }
 }

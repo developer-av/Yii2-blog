@@ -1,10 +1,10 @@
 <?php
 
-namespace developerav\forum\backend\controllers;
+namespace developerav\blog\backend\controllers;
 
 use Yii;
-use developerav\forum\common\models\Posts;
-use developerav\forum\backend\models\PostsSearch;
+use developerav\blog\common\models\Posts;
+use developerav\blog\backend\models\PostsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

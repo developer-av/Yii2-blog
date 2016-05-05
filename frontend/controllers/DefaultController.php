@@ -1,22 +1,22 @@
 <?php
 
-namespace developerav\forum\frontend\controllers;
+namespace developerav\blog\frontend\controllers;
 
-use developerav\forum\common\models\Posts;
+use developerav\blog\common\models\Posts;
 use yii\web\NotFoundHttpException;
 use yii\data\Pagination;
 
 class DefaultController extends \yii\web\Controller {
 
-    public function actionIndex($id = null) {
+    public function actionIndex($username = null) {
 
         $module = \Yii::$app->controller->module;
 
-        if ($module->individualPages == true) {
-            if ($id === null) {
+        if ($module->individualPages == true || $username !== null) {
+            if ($username === null) {
                 throw new NotFoundHttpException('Такой страницы не существует');
             }
-            $query = Posts::find()->where(['user_id' => $id]);
+            $query = Posts::find()->joinWith('user')->where(['user.username' => $username]);
         } else {
             $query = Posts::find();
         }
@@ -40,7 +40,7 @@ class DefaultController extends \yii\web\Controller {
             throw new NotFoundHttpException('Такой страницы не существует');
         }
 
-        return $this->render('index', ['models' => $models]);
+        return $this->render('index', ['models' => $models, 'pages' => $pages]);
     }
 
     public function actionView($id) {

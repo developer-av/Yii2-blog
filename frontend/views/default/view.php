@@ -1,7 +1,7 @@
 <?php
 /*
  * $this yii\web\View
- * $model developerav\forum\common\models\Posts
+ * $model developerav\blog\common\models\Posts
  */
 
 
