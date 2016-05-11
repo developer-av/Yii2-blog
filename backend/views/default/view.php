@@ -16,26 +16,34 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a(Yii::t('blog', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('blog', 'Delete'), ['delete', 'id' => $model->id], [
+        <?=
+        Html::a(Yii::t('blog', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('blog', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
-        ]) ?>
+        ])
+        ?>
     </p>
 
-    <?= DetailView::widget([
+    <?=
+    DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
-            'user.username',
+            'user.' . \Yii::$app->controller->module->userField,
             'title',
-            'img',
+            [
+                'attribute' => 'img',
+                'format' => 'html',
+                'value' => '<img style="display: inline-block;" class="img-responsive" src="/upload/blog/'.$model->img.'" alt="">',
+            ],
             'text:html',
             'created_at:datetime',
             'updated_at:datetime',
         ],
-    ]) ?>
+    ])
+    ?>
 
 </div>

@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-    <?= Html::a(Yii::t('blog', 'Create Posts'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('blog', 'Create Posts'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?php Pjax::begin(); ?>    <?=
     GridView::widget([
@@ -24,7 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'user.username',
+            [
+                'attribute' => 'user',
+                'content' => function ($model) {
+                    return $model->user[\Yii::$app->controller->module->userField];
+                }
+            ],
             'title',
             'created_at:datetime',
             'updated_at:datetime',
@@ -32,4 +37,4 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]);
     ?>
-<?php Pjax::end(); ?></div>
+    <?php Pjax::end(); ?></div>

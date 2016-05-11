@@ -10,23 +10,23 @@ use developerav\blog\common\models\Posts;
 /**
  * PostsSearch represents the model behind the search form about `developerav\blog\common\models\Posts`.
  */
-class PostsSearch extends Posts
-{
+class PostsSearch extends Posts {
+
+    public $user;
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            ['title', 'safe'],
+            [['user', 'title'], 'safe'],
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -38,15 +38,23 @@ class PostsSearch extends Posts
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
-        $query = Posts::find();
+    public function search($params) {
+
+        $query = Posts::find()->with('user');
+
+        $query->joinWith('user');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => ['defaultOrder' => ['id' => SORT_DESC]]
         ]);
+
+        $dataProvider->sort->attributes['user'] = [
+            'asc' => ['user.'.\Yii::$app->controller->module->userField => SORT_ASC],
+            'desc' => ['user.'.\Yii::$app->controller->module->userField => SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -57,7 +65,9 @@ class PostsSearch extends Posts
         }
 
         $query->andFilterWhere(['like', 'title', $this->title]);
+        $query->andFilterWhere(['like', \Yii::$app->controller->module->userField, $this->user]);
 
         return $dataProvider;
     }
+
 }

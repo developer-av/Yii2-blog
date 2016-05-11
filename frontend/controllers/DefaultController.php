@@ -16,7 +16,7 @@ class DefaultController extends \yii\web\Controller {
             if ($username === null) {
                 throw new NotFoundHttpException('Такой страницы не существует');
             }
-            $query = Posts::find()->joinWith('user')->where(['user.username' => $username]);
+            $query = Posts::find()->joinWith('user')->where(['user.'.$module->userField => $username]);
         } else {
             $query = Posts::find();
         }

@@ -8,9 +8,12 @@ use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
 $this->title = 'Блог';
-if(yii::$app->request->get('username'))
-{
-    $this->title .= ' '.yii::$app->request->get('username');
+if (yii::$app->request->get('username')) {
+    $this->params['breadcrumbs'][] = ['label' => 'Блог', 'url' => ['index']];
+    $this->title .= ' ' . yii::$app->request->get('username');
+    $this->params['breadcrumbs'][] = yii::$app->request->get('username');
+} else {
+    $this->params['breadcrumbs'][] = $this->title;
 }
 ?>
 
@@ -21,7 +24,7 @@ foreach ($models as $model):
         <?= Html::a($model['title'], ['view', 'id' => $model['id']]) ?>
     </h2>
     <p class="lead">
-        Автор: <?= Html::a($model['user']['username'], ['', 'username' => $model['user']['username']]) ?>
+        Автор: <?= Html::a($model['user'][\Yii::$app->controller->module->userField], ['', 'username' => $model['user'][\Yii::$app->controller->module->userField]]) ?>
     </p>
     <p><span class="glyphicon glyphicon-time"></span> Опубликован <?= Yii::$app->formatter->asDateTime($model['created_at']); ?></p>
     <?php
@@ -29,7 +32,7 @@ foreach ($models as $model):
         ?>
         <hr>
         <div class="text-center">
-            <img style="display: inline-block;" class="img-responsive" src="<?= $model['img'] ?>" alt="">
+            <img style="display: inline-block;" class="img-responsive" src="/upload/blog/<?= $model['img'] ?>" alt="">
         </div>
         <hr>
     <?php endif; ?>

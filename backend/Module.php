@@ -6,6 +6,9 @@ use Yii;
 
 class Module extends \yii\base\Module {
 
+    public $userModel = '\common\models\User';
+    public $userField = 'username';
+
     public function init() {
         if (!isset(Yii::$app->i18n->translations['blog'])) {
             Yii::$app->i18n->translations['blog'] = [

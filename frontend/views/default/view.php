@@ -6,6 +6,9 @@
 
 use yii\helpers\Html;
 $this->title = $model['title'];
+$this->params['breadcrumbs'][] = ['label' => 'Блог', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model['user'][\Yii::$app->controller->module->userField], 'url' => ['index', 'username' => $model['user'][\Yii::$app->controller->module->userField]]];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 
@@ -13,7 +16,7 @@ $this->title = $model['title'];
     <?= $model['title'] ?>
 </h2>
 <p class="lead">
-    Автор: <?= Html::a($model['user']['username'], ['', 'username' => $model['user']['username']]) ?>
+    Автор: <?= Html::a($model['user'][\Yii::$app->controller->module->userField], ['index', 'username' => $model['user'][\Yii::$app->controller->module->userField]]) ?>
 </p>
 <p><span class="glyphicon glyphicon-time"></span> Опубликован <?= Yii::$app->formatter->asDateTime($model['created_at']); ?></p>
 <?php
@@ -21,7 +24,7 @@ if (!empty($model['img'])):
     ?>
     <hr>
     <div class="text-center">
-        <img style="display: inline-block;" class="img-responsive" src="<?= $model['img'] ?>" alt="">
+        <img style="display: inline-block;" class="img-responsive" src="/upload/blog/<?= $model['img'] ?>" alt="">
     </div>
     <hr>
 <?php endif; ?>
