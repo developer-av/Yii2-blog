@@ -8,7 +8,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel developerav\blog\backend\models\PostsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('blog', 'Posts');
+$this->title = Yii::t('blog', 'Блоги');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="posts-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('blog', 'Create Posts'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('blog', 'Создать пост'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?php Pjax::begin(); ?>    <?=
     GridView::widget([

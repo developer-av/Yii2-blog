@@ -6,7 +6,7 @@
 
 use yii\helpers\Html;
 $this->title = $model['title'];
-$this->params['breadcrumbs'][] = ['label' => 'Блог', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => yii::t('blog', 'Блог'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model['user'][\Yii::$app->controller->module->userField], 'url' => ['index', 'username' => $model['user'][\Yii::$app->controller->module->userField]]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -16,9 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $model['title'] ?>
 </h2>
 <p class="lead">
-    Автор: <?= Html::a($model['user'][\Yii::$app->controller->module->userField], ['index', 'username' => $model['user'][\Yii::$app->controller->module->userField]]) ?>
+    <?= yii::t('blog', 'Автор') ?>: <?= Html::a($model['user'][\Yii::$app->controller->module->userField], ['index', 'username' => $model['user'][\Yii::$app->controller->module->userField]]) ?>
 </p>
-<p><span class="glyphicon glyphicon-time"></span> Опубликован <?= Yii::$app->formatter->asDateTime($model['created_at']); ?></p>
+<p><span class="glyphicon glyphicon-time"></span> <?= yii::t('blog', 'Опубликован') ?> <?= Yii::$app->formatter->asDateTime($model['created_at']); ?></p>
 <?php
 if (!empty($model['img'])):
     ?>

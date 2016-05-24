@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
-$this->title = 'Блог';
+$this->title = yii::t('blog', 'Блог');
 if (yii::$app->request->get('username')) {
     $this->params['breadcrumbs'][] = ['label' => 'Блог', 'url' => ['index']];
     $this->title .= ' ' . yii::$app->request->get('username');
@@ -24,9 +24,9 @@ foreach ($models as $model):
         <?= Html::a($model['title'], ['view', 'id' => $model['id']]) ?>
     </h2>
     <p class="lead">
-        Автор: <?= Html::a($model['user'][\Yii::$app->controller->module->userField], ['', 'username' => $model['user'][\Yii::$app->controller->module->userField]]) ?>
+        <?= yii::t('blog', 'Автор') ?>: <?= Html::a($model['user'][\Yii::$app->controller->module->userField], ['', 'username' => $model['user'][\Yii::$app->controller->module->userField]]) ?>
     </p>
-    <p><span class="glyphicon glyphicon-time"></span> Опубликован <?= Yii::$app->formatter->asDateTime($model['created_at']); ?></p>
+    <p><span class="glyphicon glyphicon-time"></span> <?= yii::t('blog', 'Опубликован') ?> <?= Yii::$app->formatter->asDateTime($model['created_at']); ?></p>
     <?php
     if (!empty($model['img'])):
         ?>
@@ -37,7 +37,7 @@ foreach ($models as $model):
         <hr>
     <?php endif; ?>
     <p><?= $model['text'] ?></p>
-    <?= Html::a('Read More <span class="glyphicon glyphicon-chevron-right"></span>', ['view', 'id' => $model['id']], ['class' => 'btn btn-primary']) ?>
+    <?= Html::a(yii::t('blog', 'Прочитать полностью').' <span class="glyphicon glyphicon-chevron-right"></span>', ['view', 'id' => $model['id']], ['class' => 'btn btn-primary']) ?>
 
     <hr>
     <?php
