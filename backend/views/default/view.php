@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'img',
                 'format' => 'html',
-                'value' => '<img style="display: inline-block;" class="img-responsive" src="/upload/blog/'.$model->img.'" alt="">',
+                'value' => (!empty($model->img)? '<img style="display: inline-block;" class="img-responsive" src="/upload/blog/'.$model->img.'" alt="">' : 'Нет'),
             ],
             'text:html',
             'created_at:datetime',
