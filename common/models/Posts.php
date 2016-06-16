@@ -6,6 +6,7 @@ use yii\behaviors\TimestampBehavior;
 use \yii\db\ActiveRecord;
 use yii\helpers\StringHelper;
 use yii\helpers\Inflector;
+use \Yii;
 
 /**
  * This is the model class for table "posts".
@@ -95,11 +96,13 @@ class Posts extends ActiveRecord {
         $user = (isset(\Yii::$app->controller->module->userModel::attributeLabels()[\Yii::$app->controller->module->userField])? \Yii::$app->controller->module->userModel::attributeLabels()[\Yii::$app->controller->module->userField] : self::generateAttributeForUserField(\Yii::$app->controller->module->userField));
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'img' => 'Img',
-            'text' => 'Text',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'title' => Yii::t('blog', 'Заголовок'),
+            'img' => Yii::t('blog', 'Изображение'),
+            'text' => Yii::t('blog', 'Текст'),
+            'text' => Yii::t('blog', 'Текст'),
+            'created_at' => Yii::t('blog', 'Создан'),
+            'updated_at' => Yii::t('blog', 'Обновлен'),
+            'file' => Yii::t('blog', 'Изображение'),
             'user' => $user,
         ];
     }

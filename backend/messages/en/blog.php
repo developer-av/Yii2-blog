@@ -8,4 +8,11 @@ return [
     'Удалить' => 'Delete',
     'Создать пост' => 'Create Posts',
     'Создать' => 'Create',
+    'Заголовок' => 'Title',
+    'Изображение' => 'Image',
+    'Текст' => 'Text',
+    'Создан' => 'Created At',
+    'Обновлен' => 'Updated At',
+    'Изменение поста' => 'Update Posts',
+    'Изменить' => 'Update Posts',
 ];
