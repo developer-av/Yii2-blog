@@ -46,10 +46,12 @@ class DefaultController extends \yii\web\Controller {
 
     public function actionView($id) {
         $model = Posts::find()->where(['id' => $id])->asArray()->with('user')->one();
+        $models[0] = Posts::find()->where('id < '.$model['id'])->select(['id', 'title'])->orderBy('id DESC')->asArray()->one();
+        $models[1] = Posts::find()->where('id > '.$model['id'])->select(['id', 'title'])->orderBy('id ASC')->asArray()->one();
         if (empty($model)) {
             throw new NotFoundHttpException('Такой страницы не существует');
         }
-        return $this->render('view', ['model' => $model]);
+        return $this->render('view', ['model' => $model, 'models' => $models]);
     }
 
 }
