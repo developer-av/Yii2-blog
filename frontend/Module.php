@@ -10,6 +10,7 @@ class Module extends \yii\base\Module {
 
     public $userModel = '\common\models\User';
     public $userField = 'username';
+    public $pageSize = 20;
 
     public function init() {
         if (!isset(Yii::$app->i18n->translations['blog'])) {

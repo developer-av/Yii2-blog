@@ -25,6 +25,7 @@ class DefaultController extends \yii\web\Controller {
         $countQuery = clone $query;
         // подключаем класс Pagination, выводим по 10 пунктов на страницу
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
+        $pages->pageSize = $module->pageSize;
         // приводим параметры в ссылке к ЧПУ
         $pages->pageSizeParam = false;
         $models = $query->offset($pages->offset)
